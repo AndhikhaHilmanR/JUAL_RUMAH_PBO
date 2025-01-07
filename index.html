@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penjualan Rumah</title>
+    <style>
+      /* Reset CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body styling */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+        padding: 0 20px;
+      }
+
+      /* Header styling */
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        transition: background 0.3s;
+      }
+
+      nav ul li a:hover {
+        background: #0056b3;
+        border-radius: 5px;
+      }
+
+      /* Intro Section */
+      #intro {
+        text-align: center;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      /* Property list styling */
+      #properties {
+        margin-bottom: 20px;
+      }
+
+      #properties {
+        background-color: #a1e6ff; /* Warna latar belakang biru muda */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(92, 92, 92, 0.1);
+      }
+
+      .property-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .property {
+        width: 300px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .property:hover {
+        transform: scale(1.05);
+      }
+
+      .property img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .property h3 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        text-align: center;
+        color: #007bff;
+      }
+
+      .property p {
+        font-size: 0.9rem;
+        margin: 5px 0;
+        text-align: center;
+        color: #555;
+      }
+
+      .property .detail-btn {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .property .detail-btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Modal styling */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 500px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .modal-header {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #007bff;
+      }
+
+      .modal-body p {
+        margin-bottom: 10px;
+      }
+
+      .modal-close {
+        background: #ff4d4d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+      }
+
+      .modal-close:hover {
+        background: #cc0000;
+      }
+
+      /* WhatsApp button styling */
+      .whatsapp-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #25d366;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        width: fit-content;
+        transition: background-color 0.3s;
+      }
+
+      .whatsapp-btn:hover {
+        background-color: #1da851;
+      }
+
+      /* Background styling for About and Contact sections */
+      #about,
+      #contact {
+        background-color: #00000094;
+        color: #fff; /* Ubah warna teks menjadi putih */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      #social-media {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      #social-media h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-icons a img {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s ease;
+      }
+
+      .social-icons a img:hover {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Platform Penjualan Rumah</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Beranda</a></li>
+          <li><a href="#properties">Daftar Rumah</a></li>
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="intro">
+        <h2>Temukan Rumah Impian Anda</h2>
+        <p>
+          Kami menyediakan berbagai pilihan rumah yang sesuai dengan kebutuhan
+          dan anggaran Anda.
+        </p>
+      </section>
+
+      <section id="properties">
+        <h2>Daftar Rumah</h2>
+        <div class="property-list">
+          <article class="property">
+            <img src="./gambar/rumah deni.jpg" alt="Rumah Modern" />
+            <h3>Rumah Modern di Jakarta</h3>
+            <p>Harga: Rp 1.500.000.000</p>
+            <p>Lokasi: Jakarta Selatan</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Modern di Jakarta', 'Rumah modern di Jakarta Selatan dengan 4 kamar tidur, 3 kamar mandi, dan fasilitas lengkap.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah isal.jpg" alt="Rumah Minimalis" />
+            <h3>Rumah Minimalis di Bandung</h3>
+            <p>Harga: Rp 850.000.000</p>
+            <p>Lokasi: Bandung Barat</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Minimalis di Bandung', 'Rumah minimalis dengan desain modern, 3 kamar tidur dan lokasi strategis.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah izal.jpg" alt="Rumah Klasik" />
+            <h3>Rumah Klasik di Surabaya</h3>
+            <p>Harga: Rp 2.000.000.000</p>
+            <p>Lokasi: Surabaya Timur</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Klasik di Surabaya', 'Rumah klasik luas dengan taman asri, 5 kamar tidur dan fasilitas premium.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah mas epin.jpg" alt="Rumah Villa" />
+            <h3>Villa Asri di Bali</h3>
+            <p>Harga: Rp 3.500.000.000</p>
+            <p>Lokasi: Bali</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Villa Asri di Bali', 'Villa eksklusif dengan pemandangan pantai, 4 kamar tidur, dan kolam renang.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah shandy.jpg" alt="Rumah Subsidi" />
+            <h3>Rumah Subsidi di Bekasi</h3>
+            <p>Harga: Rp 200.000.000</p>
+            <p>Lokasi: Bekasi Timur</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Subsidi di Bekasi', 'Rumah sederhana untuk keluarga kecil dengan harga terjangkau.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah zio.jpg" alt="Rumah Minimalis Modern" />
+            <h3>Rumah Minimalis di Yogyakarta</h3>
+            <p>Harga: Rp 1.200.000.000</p>
+            <p>Lokasi: Sleman, Yogyakarta</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Minimalis di Yogyakarta', 'Rumah modern dengan desain minimalis, 3 kamar tidur, dekat kampus UGM.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_1.jpeg" alt="Rumah Cluster" />
+            <h3>Rumah Cluster di Depok</h3>
+            <p>Harga: Rp 950.000.000</p>
+            <p>Lokasi: Depok</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Cluster di Depok', 'Rumah di lingkungan cluster yang aman dan nyaman.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_2.jpeg" alt="Rumah Dua Lantai" />
+            <h3>Rumah 2 Lantai di Malang</h3>
+            <p>Harga: Rp 1.800.000.000</p>
+            <p>Lokasi: Malang</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah 2 Lantai di Malang', 'Rumah mewah dengan 5 kamar tidur dan taman luas.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_3.jpeg" alt="Rumah Dekat Stasiun" />
+            <h3>Rumah Strategis di Bogor</h3>
+            <p>Harga: Rp 1.100.000.000</p>
+            <p>Lokasi: Bogor</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Strategis di Bogor', 'Rumah dekat stasiun dengan akses mudah ke pusat kota.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_4.jpeg" alt="Rumah Elite" />
+            <h3>Rumah Elite di Tangerang</h3>
+            <p>Harga: Rp 3.000.000.000</p>
+            <p>Lokasi: BSD, Tangerang</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Elite di Tangerang', 'Rumah mewah di kawasan elite BSD City dengan fasilitas premium.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>Tentang Kami</h2>
+        <p>
+          Kami adalah platform terpercaya yang membantu Anda menemukan dan
+          membeli rumah idaman dengan mudah dan aman.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>Kontak Kami</h2>
+        <p>Email: info@penjualanrumah.com</p>
+        <p>Telepon: +62 812 3456 7890</p>
+        <h2>Follow Me:</h2>
+        <div class="social-icons">
+          <a href="https://wa.me/6281234567890" target="_blank">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+              alt="WhatsApp"
+            />
+          </a>
+          <a href="https://instagram.com" target="_blank">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+              alt="Instagram"
+            />
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+              alt="Facebook"
+            />
+          </a>
+          <a href="https://tiktok.com" target="_blank">
+            <img
+              src="https://img.icons8.com/?size=80&id=oKHadYScUe2I&format=png"
+              alt="TikTok"
+            />
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Penjualan Rumah. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal (Popup) -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">Tutup</button>
+        <div class="modal-header" id="modal-title"></div>
+        <div class="modal-body" id="modal-description"></div>
+      </div>
+    </div>
+
+    <script>
+      function openModal(title, description) {
+        document.getElementById("modal-title").innerText = title;
+        document.getElementById("modal-description").innerText = description;
+        document.getElementById("modal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
