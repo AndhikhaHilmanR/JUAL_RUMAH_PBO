@@ -23,7 +23,7 @@
 
       /* Header styling */
       header {
-        background-color: #007bff;
+        background-color: #00000094;
         color: #fff;
         padding: 20px 0;
         text-align: center;
@@ -72,7 +72,7 @@
       }
 
       #properties {
-        background-color: #a1e6ff; /* Warna latar belakang biru muda */
+        background-color: #ffffff; /* Warna latar belakang biru muda */
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(92, 92, 92, 0.1);
@@ -133,8 +133,9 @@
         transition: background 0.3s;
       }
 
+      
       .property .detail-btn:hover {
-        background-color: #0056b3;
+        background-color: #002592d2;
       }
 
       /* Modal styling */
@@ -243,7 +244,7 @@
   </head>
   <body>
     <header>
-      <h1>Hilman Living Home</h1>
+      <h1>Platform Penjualan Rumah</h1>
       <nav>
         <ul>
           <li><a href="#">Beranda</a></li>
@@ -266,6 +267,136 @@
       <section id="properties">
         <h2>Daftar Rumah</h2>
         <div class="property-list">
+          <article class="property">
+            <img src="./gambar/rumah deni.jpg" alt="Rumah Modern" />
+            <h3>Rumah Modern di Jakarta</h3>
+            <p>Harga: Rp 1.500.000.000</p>
+            <p>Lokasi: Jakarta Selatan</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Modern di Jakarta', 'Rumah modern di Jakarta Selatan dengan 4 kamar tidur, 3 kamar mandi, dan fasilitas lengkap.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah isal.jpg" alt="Rumah Minimalis" />
+            <h3>Rumah Minimalis di Bandung</h3>
+            <p>Harga: Rp 850.000.000</p>
+            <p>Lokasi: Bandung Barat</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Minimalis di Bandung', 'Rumah minimalis dengan desain modern, 3 kamar tidur dan lokasi strategis.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah izal.jpg" alt="Rumah Klasik" />
+            <h3>Rumah Klasik di Surabaya</h3>
+            <p>Harga: Rp 2.000.000.000</p>
+            <p>Lokasi: Surabaya Timur</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Klasik di Surabaya', 'Rumah klasik luas dengan taman asri, 5 kamar tidur dan fasilitas premium.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah mas epin.jpg" alt="Rumah Villa" />
+            <h3>Villa Asri di Bali</h3>
+            <p>Harga: Rp 3.500.000.000</p>
+            <p>Lokasi: Bali</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Villa Asri di Bali', 'Villa eksklusif dengan pemandangan pantai, 4 kamar tidur, dan kolam renang.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah shandy.jpg" alt="Rumah Subsidi" />
+            <h3>Rumah Subsidi di Bekasi</h3>
+            <p>Harga: Rp 200.000.000</p>
+            <p>Lokasi: Bekasi Timur</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Subsidi di Bekasi', 'Rumah sederhana untuk keluarga kecil dengan harga terjangkau.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah zio.jpg" alt="Rumah Minimalis Modern" />
+            <h3>Rumah Minimalis di Yogyakarta</h3>
+            <p>Harga: Rp 1.200.000.000</p>
+            <p>Lokasi: Sleman, Yogyakarta</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Minimalis di Yogyakarta', 'Rumah modern dengan desain minimalis, 3 kamar tidur, dekat kampus UGM.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_1.jpeg" alt="Rumah Cluster" />
+            <h3>Rumah Cluster di Depok</h3>
+            <p>Harga: Rp 950.000.000</p>
+            <p>Lokasi: Depok</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Cluster di Depok', 'Rumah di lingkungan cluster yang aman dan nyaman.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_2.jpeg" alt="Rumah Dua Lantai" />
+            <h3>Rumah 2 Lantai di Malang</h3>
+            <p>Harga: Rp 1.800.000.000</p>
+            <p>Lokasi: Malang</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah 2 Lantai di Malang', 'Rumah mewah dengan 5 kamar tidur dan taman luas.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_3.jpeg" alt="Rumah Dekat Stasiun" />
+            <h3>Rumah Strategis di Bogor</h3>
+            <p>Harga: Rp 1.100.000.000</p>
+            <p>Lokasi: Bogor</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Strategis di Bogor', 'Rumah dekat stasiun dengan akses mudah ke pusat kota.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
+          <article class="property">
+            <img src="./gambar/rumah_jual_4.jpeg" alt="Rumah Elite" />
+            <h3>Rumah Elite di Tangerang</h3>
+            <p>Harga: Rp 3.000.000.000</p>
+            <p>Lokasi: BSD, Tangerang</p>
+            <button
+              class="detail-btn"
+              onclick="openModal('Rumah Elite di Tangerang', 'Rumah mewah di kawasan elite BSD City dengan fasilitas premium.')"
+            >
+              Lihat Detail
+            </button>
+          </article>
+
           <article class="property">
             <img src="./gambar/rumah deni.jpg" alt="Rumah Modern" />
             <h3>Rumah Modern di Jakarta</h3>
